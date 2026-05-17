@@ -15,8 +15,8 @@ export function Footer() {
             </div>
           </div>
           <p className="text-sm leading-relaxed text-white/70">
-            Shaping tomorrow's leaders since 1900. A proud public secondary school
-            serving the Kokstad and East Griqualand community.
+            Shaping tomorrow's leaders since 1900. A proud public secondary school serving the
+            Kokstad and East Griqualand community.
           </p>
         </div>
 
@@ -44,12 +44,29 @@ export function Footer() {
         <div>
           <h4 className="text-white font-display text-lg mb-4">Get in Touch</h4>
           <ul className="space-y-3 text-sm">
-            <li className="flex gap-3"><MapPin size={18} className="text-gold shrink-0 mt-0.5" /><span>The Avenue Street, Kokstad, KwaZulu-Natal, 4700</span></li>
-            <li className="flex gap-3"><Phone size={18} className="text-gold shrink-0 mt-0.5" /><a href="tel:0397272187" className="hover:text-gold">039 727 2187</a></li>
-            <li className="flex gap-3"><Mail size={18} className="text-gold shrink-0 mt-0.5" /><a href="mailto:principal@kokstadcollege.co.za" className="hover:text-gold break-all">principal@kokstadcollege.co.za</a></li>
+            <li className="flex gap-3">
+              <MapPin size={18} className="text-gold shrink-0 mt-0.5" />
+              <span>The Avenue Street, Kokstad, KwaZulu-Natal, 4700</span>
+            </li>
+            <li className="flex gap-3">
+              <Phone size={18} className="text-gold shrink-0 mt-0.5" />
+              <a href="tel:0397272187" className="hover:text-gold">
+                039 727 2187
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <Mail size={18} className="text-gold shrink-0 mt-0.5" />
+              <a href="mailto:principal@kokstadcollege.co.za" className="hover:text-gold break-all">
+                principal@kokstadcollege.co.za
+              </a>
+            </li>
           </ul>
           <div className="flex gap-3 mt-5">
-            <a href="#" aria-label="Facebook" className="bg-white/10 hover:bg-gold hover:text-navy w-10 h-10 grid place-items-center rounded-full transition">
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="bg-white/10 hover:bg-gold hover:text-navy w-10 h-10 grid place-items-center rounded-full transition"
+            >
               <Facebook size={18} />
             </a>
           </div>

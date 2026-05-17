@@ -34,10 +34,18 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Kokstad College crest" className="h-12 w-12 object-contain rounded bg-white p-0.5" />
+            <img
+              src={logo}
+              alt="Kokstad College crest"
+              className="h-12 w-12 object-contain rounded bg-white p-0.5"
+            />
             <div className="hidden sm:block">
-              <div className="text-white font-display font-bold text-lg leading-tight">Kokstad College</div>
-              <div className="text-gold text-[10px] uppercase tracking-widest">Consiste Fide · Est. 1900</div>
+              <div className="text-white font-display font-bold text-lg leading-tight">
+                Kokstad College
+              </div>
+              <div className="text-gold text-[10px] uppercase tracking-widest">
+                Consiste Fide · Est. 1900
+              </div>
             </div>
           </Link>
 
