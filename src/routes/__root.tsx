@@ -106,12 +106,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+import { Navbar } from "@/components/site/Navbar";
+import { Footer } from "@/components/site/Footer";
+import { Toaster } from "sonner";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <Navbar />
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
+      <Footer />
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
