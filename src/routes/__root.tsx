@@ -115,6 +115,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { Chatbot } from "@/components/site/Chatbot";
 import { Toaster } from "sonner";
 import { useRouterState } from "@tanstack/react-router";
 
@@ -130,6 +131,7 @@ function RootComponent() {
         <Outlet />
       </main>
       {!isAdmin && <Footer />}
+      {!isAdmin && <Chatbot />}
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
