@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Lock, Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 export function Footer() {
@@ -76,6 +76,13 @@ export function Footer() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row justify-between gap-2 text-xs text-white/60">
           <p>© {new Date().getFullYear()} Kokstad College. All rights reserved.</p>
           <p>EMIS: 500176897 · Harry Gwala Education District</p>
+          <Link
+            to="/admin"
+            className="inline-flex items-center gap-1.5 text-white/60 hover:text-gold transition-colors"
+          >
+            <Lock size={12} />
+            Admin Portal
+          </Link>
         </div>
       </div>
     </footer>
