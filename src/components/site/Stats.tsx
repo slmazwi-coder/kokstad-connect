@@ -25,14 +25,19 @@ function Stat({ value, suffix = "", label }: { value: number; suffix?: string; l
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVis(true), { threshold: 0.4 });
+    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVis(true), {
+      threshold: 0.4,
+    });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
   const n = useCount(value, vis);
   return (
     <div ref={ref} className="text-center">
-      <div className="font-display text-4xl md:text-5xl font-bold text-gold">{n.toLocaleString()}{suffix}</div>
+      <div className="font-display text-4xl md:text-5xl font-bold text-gold">
+        {n.toLocaleString()}
+        {suffix}
+      </div>
       <div className="mt-2 text-white/80 text-sm uppercase tracking-widest">{label}</div>
     </div>
   );

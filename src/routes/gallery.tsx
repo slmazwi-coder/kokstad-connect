@@ -13,7 +13,15 @@ import hero4 from "@/assets/hero-4.jpg";
 
 export const Route = createFileRoute("/gallery")({
   component: Gallery,
-  head: () => ({ meta: [{ title: "Gallery — Kokstad College" }, { name: "description", content: "Photos from school events, sport, and community life at Kokstad College." }] }),
+  head: () => ({
+    meta: [
+      { title: "Gallery — Kokstad College" },
+      {
+        name: "description",
+        content: "Photos from school events, sport, and community life at Kokstad College.",
+      },
+    ],
+  }),
 });
 
 const albums = [
@@ -26,7 +34,11 @@ function Gallery() {
   const [open, setOpen] = useState<string | null>(null);
   return (
     <div>
-      <PageHeader eyebrow="Moments" title="Gallery" subtitle="Glimpses of life and learning at Kokstad College." />
+      <PageHeader
+        eyebrow="Moments"
+        title="Gallery"
+        subtitle="Glimpses of life and learning at Kokstad College."
+      />
 
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 space-y-14">
@@ -35,8 +47,16 @@ function Gallery() {
               <h2 className="font-display text-2xl text-navy mb-5">{a.title}</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {a.photos.map((p, i) => (
-                  <button key={i} onClick={() => setOpen(p)} className="aspect-[4/3] overflow-hidden rounded-xl group">
-                    <img src={p} alt="" className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                  <button
+                    key={i}
+                    onClick={() => setOpen(p)}
+                    className="aspect-[4/3] overflow-hidden rounded-xl group"
+                  >
+                    <img
+                      src={p}
+                      alt=""
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    />
                   </button>
                 ))}
               </div>
@@ -46,8 +66,13 @@ function Gallery() {
       </section>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-black/90 grid place-items-center p-4" onClick={() => setOpen(null)}>
-          <button className="absolute top-5 right-5 text-white p-2" aria-label="Close"><X /></button>
+        <div
+          className="fixed inset-0 z-50 bg-black/90 grid place-items-center p-4"
+          onClick={() => setOpen(null)}
+        >
+          <button className="absolute top-5 right-5 text-white p-2" aria-label="Close">
+            <X />
+          </button>
           <img src={open} alt="" className="max-h-[90vh] max-w-full rounded-lg" />
         </div>
       )}

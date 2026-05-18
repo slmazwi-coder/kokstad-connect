@@ -6,25 +6,48 @@ import { toast } from "sonner";
 
 export const Route = createFileRoute("/admissions")({
   component: Admissions,
-  head: () => ({ meta: [{ title: "Admissions — Kokstad College" }, { name: "description", content: "Apply online for 2027. Applications open 15 April 2026 — 31 August 2026." }] }),
+  head: () => ({
+    meta: [
+      { title: "Admissions — Kokstad College" },
+      {
+        name: "description",
+        content: "Apply online for 2027. Applications open 15 April 2026 — 31 August 2026.",
+      },
+    ],
+  }),
 });
 
 const steps = ["Learner", "Parent / Guardian", "Documents", "Medical", "Declaration"];
 
-function Field({ label, ...props }: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+function Field({
+  label,
+  ...props
+}: { label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="block">
       <span className="text-sm font-medium text-navy">{label}</span>
-      <input {...props} className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy" />
+      <input
+        {...props}
+        className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy"
+      />
     </label>
   );
 }
 
-function Select({ label, children, ...props }: { label: string; children: React.ReactNode } & React.SelectHTMLAttributes<HTMLSelectElement>) {
+function Select({
+  label,
+  children,
+  ...props
+}: { label: string; children: React.ReactNode } & React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <label className="block">
       <span className="text-sm font-medium text-navy">{label}</span>
-      <select {...props} className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy">{children}</select>
+      <select
+        {...props}
+        className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-navy"
+      >
+        {children}
+      </select>
     </label>
   );
 }
@@ -72,12 +95,25 @@ function Admissions() {
               <Check className="text-navy" size={40} />
             </div>
             <h2 className="font-display text-3xl text-navy mt-6">Thank you for applying</h2>
-            <p className="mt-3 text-muted-foreground">A confirmation email has been sent to the parent/guardian address. Please retain your reference number.</p>
+            <p className="mt-3 text-muted-foreground">
+              A confirmation email has been sent to the parent/guardian address. Please retain your
+              reference number.
+            </p>
             <div className="mt-8 bg-secondary rounded-xl p-6">
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">Reference number</p>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                Reference number
+              </p>
               <p className="font-display text-3xl text-navy mt-2">{done}</p>
             </div>
-            <button onClick={() => { setDone(null); setStep(0); }} className="mt-8 text-navy hover:text-gold underline">Submit another application</button>
+            <button
+              onClick={() => {
+                setDone(null);
+                setStep(0);
+              }}
+              className="mt-8 text-navy hover:text-gold underline"
+            >
+              Submit another application
+            </button>
           </div>
         </section>
       </div>
@@ -105,11 +141,32 @@ function Admissions() {
               }
             }}
           >
-            <input placeholder="Reference (e.g. KC-2026-1234)" required onChange={(e) => setTracker({ ...(tracker ?? { ref: "", email: "" }), ref: e.target.value })} className="rounded-md border border-input px-3 py-2.5 text-sm bg-background" />
-            <input type="email" placeholder="Parent email" required onChange={(e) => setTracker({ ...(tracker ?? { ref: "", email: "" }), email: e.target.value })} className="rounded-md border border-input px-3 py-2.5 text-sm bg-background" />
-            <button className="bg-navy text-white px-5 py-2.5 rounded-md font-semibold text-sm hover:bg-navy-light">Check</button>
+            <input
+              placeholder="Reference (e.g. KC-2026-1234)"
+              required
+              onChange={(e) =>
+                setTracker({ ...(tracker ?? { ref: "", email: "" }), ref: e.target.value })
+              }
+              className="rounded-md border border-input px-3 py-2.5 text-sm bg-background"
+            />
+            <input
+              type="email"
+              placeholder="Parent email"
+              required
+              onChange={(e) =>
+                setTracker({ ...(tracker ?? { ref: "", email: "" }), email: e.target.value })
+              }
+              className="rounded-md border border-input px-3 py-2.5 text-sm bg-background"
+            />
+            <button className="bg-navy text-white px-5 py-2.5 rounded-md font-semibold text-sm hover:bg-navy-light">
+              Check
+            </button>
           </form>
-          {trackerResult && <p className="mt-3 text-sm">Status: <span className="font-semibold text-navy">{trackerResult}</span></p>}
+          {trackerResult && (
+            <p className="mt-3 text-sm">
+              Status: <span className="font-semibold text-navy">{trackerResult}</span>
+            </p>
+          )}
         </div>
       </section>
 
@@ -119,11 +176,19 @@ function Admissions() {
           <ol className="flex flex-wrap items-center gap-2 mb-10">
             {steps.map((s, i) => (
               <li key={s} className="flex items-center gap-2 text-sm">
-                <span className={`w-8 h-8 grid place-items-center rounded-full font-semibold ${i <= step ? "bg-navy text-white" : "bg-secondary text-muted-foreground"}`}>
+                <span
+                  className={`w-8 h-8 grid place-items-center rounded-full font-semibold ${i <= step ? "bg-navy text-white" : "bg-secondary text-muted-foreground"}`}
+                >
                   {i < step ? <Check size={16} /> : i + 1}
                 </span>
-                <span className={`hidden sm:inline ${i === step ? "text-navy font-semibold" : "text-muted-foreground"}`}>{s}</span>
-                {i < steps.length - 1 && <span className="text-muted-foreground hidden sm:inline">—</span>}
+                <span
+                  className={`hidden sm:inline ${i === step ? "text-navy font-semibold" : "text-muted-foreground"}`}
+                >
+                  {s}
+                </span>
+                {i < steps.length - 1 && (
+                  <span className="text-muted-foreground hidden sm:inline">—</span>
+                )}
               </li>
             ))}
           </ol>
@@ -139,7 +204,14 @@ function Admissions() {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Field label="Date of birth" type="date" required />
-                  <Select label="Gender" required defaultValue=""><option value="" disabled>Select…</option><option>Female</option><option>Male</option><option>Other</option></Select>
+                  <Select label="Gender" required defaultValue="">
+                    <option value="" disabled>
+                      Select…
+                    </option>
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Other</option>
+                  </Select>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Field label="Nationality" required />
@@ -151,7 +223,14 @@ function Admissions() {
                   <Field label="Current grade" />
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <Select label="Grade applying for" required defaultValue=""><option value="" disabled>Select…</option>{[8,9,10,11,12].map(g => <option key={g}>Grade {g}</option>)}</Select>
+                  <Select label="Grade applying for" required defaultValue="">
+                    <option value="" disabled>
+                      Select…
+                    </option>
+                    {[8, 9, 10, 11, 12].map((g) => (
+                      <option key={g}>Grade {g}</option>
+                    ))}
+                  </Select>
                   <Field label="Year of entry" type="number" defaultValue={2027} required />
                 </div>
               </>
@@ -169,7 +248,9 @@ function Admissions() {
                   <Field label="Email" type="email" required />
                   <Field label="Work number" type="tel" />
                 </div>
-                <p className="text-sm font-semibold text-navy mt-6">Parent / Guardian 2 (optional)</p>
+                <p className="text-sm font-semibold text-navy mt-6">
+                  Parent / Guardian 2 (optional)
+                </p>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Field label="Full name" />
                   <Field label="Relationship" />
@@ -178,14 +259,18 @@ function Admissions() {
                 </div>
                 <p className="text-sm font-semibold text-navy mt-6">Address</p>
                 <Field label="Physical home address" required />
-                <label className="flex items-center gap-2 text-sm"><input type="checkbox" /> Postal address same as physical</label>
+                <label className="flex items-center gap-2 text-sm">
+                  <input type="checkbox" /> Postal address same as physical
+                </label>
                 <Field label="Postal address" />
               </>
             )}
             {step === 2 && (
               <>
                 <h3 className="font-display text-2xl text-navy">Document Uploads</h3>
-                <p className="text-sm text-muted-foreground">Please upload certified copies where required. PDF or image files accepted.</p>
+                <p className="text-sm text-muted-foreground">
+                  Please upload certified copies where required. PDF or image files accepted.
+                </p>
                 <div className="grid sm:grid-cols-2 gap-3">
                   <FileField label="Learner's birth certificate (certified)" />
                   <FileField label="Parent / Guardian ID (certified)" />
@@ -201,17 +286,31 @@ function Admissions() {
               <>
                 <h3 className="font-display text-2xl text-navy">Medical & Special Needs</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <Select label="Medical aid" defaultValue=""><option value="" disabled>Select…</option><option>Yes</option><option>No</option></Select>
+                  <Select label="Medical aid" defaultValue="">
+                    <option value="" disabled>
+                      Select…
+                    </option>
+                    <option>Yes</option>
+                    <option>No</option>
+                  </Select>
                   <Field label="Provider" />
                   <Field label="Medical aid number" />
                 </div>
                 <label className="block">
-                  <span className="text-sm font-medium text-navy">Chronic conditions or allergies</span>
-                  <textarea rows={3} className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" />
+                  <span className="text-sm font-medium text-navy">
+                    Chronic conditions or allergies
+                  </span>
+                  <textarea
+                    rows={3}
+                    className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  />
                 </label>
                 <label className="block">
                   <span className="text-sm font-medium text-navy">Learning support needs</span>
-                  <textarea rows={3} className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm" />
+                  <textarea
+                    rows={3}
+                    className="mt-1.5 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  />
                 </label>
                 <p className="text-sm font-semibold text-navy mt-4">Emergency Contact</p>
                 <div className="grid sm:grid-cols-3 gap-4">
@@ -225,23 +324,50 @@ function Admissions() {
               <>
                 <h3 className="font-display text-2xl text-navy">Declaration & Submit</h3>
                 <div className="space-y-3 mt-4">
-                  <label className="flex gap-3 text-sm"><input type="checkbox" required className="mt-1" /><span>I confirm that all information provided is accurate and complete to the best of my knowledge.</span></label>
-                  <label className="flex gap-3 text-sm"><input type="checkbox" required className="mt-1" /><span>I have read and agree to Kokstad College's terms and conditions, code of conduct, and admissions policy.</span></label>
+                  <label className="flex gap-3 text-sm">
+                    <input type="checkbox" required className="mt-1" />
+                    <span>
+                      I confirm that all information provided is accurate and complete to the best
+                      of my knowledge.
+                    </span>
+                  </label>
+                  <label className="flex gap-3 text-sm">
+                    <input type="checkbox" required className="mt-1" />
+                    <span>
+                      I have read and agree to Kokstad College's terms and conditions, code of
+                      conduct, and admissions policy.
+                    </span>
+                  </label>
                 </div>
-                <p className="text-xs text-muted-foreground mt-6">A reference number will be issued on submission. A confirmation email will be sent to the parent/guardian email address provided.</p>
+                <p className="text-xs text-muted-foreground mt-6">
+                  A reference number will be issued on submission. A confirmation email will be sent
+                  to the parent/guardian email address provided.
+                </p>
               </>
             )}
 
             <div className="flex justify-between pt-6 border-t mt-6">
-              <button type="button" disabled={step === 0} onClick={() => setStep(step - 1)} className="flex items-center gap-2 px-5 py-2.5 rounded-md border border-input text-sm font-semibold disabled:opacity-40">
+              <button
+                type="button"
+                disabled={step === 0}
+                onClick={() => setStep(step - 1)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-md border border-input text-sm font-semibold disabled:opacity-40"
+              >
                 <ChevronLeft size={16} /> Back
               </button>
               {step < steps.length - 1 ? (
-                <button type="button" onClick={() => setStep(step + 1)} className="flex items-center gap-2 bg-navy text-white px-6 py-2.5 rounded-md text-sm font-semibold hover:bg-navy-light">
+                <button
+                  type="button"
+                  onClick={() => setStep(step + 1)}
+                  className="flex items-center gap-2 bg-navy text-white px-6 py-2.5 rounded-md text-sm font-semibold hover:bg-navy-light"
+                >
                   Next <ChevronRight size={16} />
                 </button>
               ) : (
-                <button type="submit" className="bg-gold text-navy px-6 py-2.5 rounded-md text-sm font-semibold hover:brightness-110">
+                <button
+                  type="submit"
+                  className="bg-gold text-navy px-6 py-2.5 rounded-md text-sm font-semibold hover:brightness-110"
+                >
                   Submit Application
                 </button>
               )}

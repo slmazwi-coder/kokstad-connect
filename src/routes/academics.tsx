@@ -4,7 +4,15 @@ import { GraduationCap, BookMarked, Trophy } from "lucide-react";
 
 export const Route = createFileRoute("/academics")({
   component: Academics,
-  head: () => ({ meta: [{ title: "Academics — Kokstad College" }, { name: "description", content: "CAPS curriculum from Grade 8 to 12, with a consistent 92%+ matric pass rate." }] }),
+  head: () => ({
+    meta: [
+      { title: "Academics — Kokstad College" },
+      {
+        name: "description",
+        content: "CAPS curriculum from Grade 8 to 12, with a consistent 92%+ matric pass rate.",
+      },
+    ],
+  }),
 });
 
 const results = [
@@ -18,16 +26,20 @@ function Academics() {
   const max = Math.max(...results.map((r) => r.pct));
   return (
     <div>
-      <PageHeader eyebrow="Learning" title="Academics" subtitle="A rigorous CAPS curriculum delivered by 29 dedicated educators." />
+      <PageHeader
+        eyebrow="Learning"
+        title="Academics"
+        subtitle="A rigorous CAPS curriculum delivered by 29 dedicated educators."
+      />
 
       <section className="py-16">
         <div className="mx-auto max-w-5xl px-4">
           <p className="text-gold uppercase tracking-[0.3em] text-xs">Curriculum</p>
           <h2 className="font-display text-3xl text-navy mt-3">Curriculum Overview</h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Kokstad College follows the National Curriculum Statement (CAPS) as prescribed by
-            the Department of Basic Education, with a strong emphasis on academic excellence,
-            critical thinking, and the development of every learner.
+            Kokstad College follows the National Curriculum Statement (CAPS) as prescribed by the
+            Department of Basic Education, with a strong emphasis on academic excellence, critical
+            thinking, and the development of every learner.
           </p>
         </div>
       </section>
@@ -38,8 +50,21 @@ function Academics() {
             <GraduationCap className="text-gold mb-4" size={32} />
             <h3 className="font-display text-2xl text-navy">Senior Phase (Grade 8–9)</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {["Home Language", "First Additional Language", "Mathematics", "Natural Sciences", "Technology", "Social Sciences", "Economic Management Sciences", "Life Orientation", "Creative Arts"].map((s) => (
-                <li key={s} className="flex gap-2"><span className="text-gold">•</span>{s}</li>
+              {[
+                "Home Language",
+                "First Additional Language",
+                "Mathematics",
+                "Natural Sciences",
+                "Technology",
+                "Social Sciences",
+                "Economic Management Sciences",
+                "Life Orientation",
+                "Creative Arts",
+              ].map((s) => (
+                <li key={s} className="flex gap-2">
+                  <span className="text-gold">•</span>
+                  {s}
+                </li>
               ))}
             </ul>
           </div>
@@ -48,12 +73,25 @@ function Academics() {
             <h3 className="font-display text-2xl text-navy">FET Phase (Grade 10–12)</h3>
             <p className="mt-3 text-sm font-semibold text-navy">Compulsory</p>
             <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-              <li>Home Language · First Additional Language · Life Orientation · Mathematics or Mathematical Literacy</li>
+              <li>
+                Home Language · First Additional Language · Life Orientation · Mathematics or
+                Mathematical Literacy
+              </li>
             </ul>
             <p className="mt-4 text-sm font-semibold text-navy">Electives</p>
             <ul className="mt-2 grid grid-cols-2 gap-y-1 text-sm text-muted-foreground">
-              {["Accounting", "History", "Geography", "Agricultural Sciences", "Economics", "Business Studies"].map((s) => (
-                <li key={s} className="flex gap-2"><span className="text-gold">•</span>{s}</li>
+              {[
+                "Accounting",
+                "History",
+                "Geography",
+                "Agricultural Sciences",
+                "Economics",
+                "Business Studies",
+              ].map((s) => (
+                <li key={s} className="flex gap-2">
+                  <span className="text-gold">•</span>
+                  {s}
+                </li>
               ))}
             </ul>
           </div>
@@ -64,7 +102,9 @@ function Academics() {
         <div className="mx-auto max-w-5xl px-4">
           <div className="text-center mb-10">
             <Trophy className="text-gold mx-auto" size={36} />
-            <h2 className="font-display text-3xl md:text-4xl text-navy mt-3">Matric Results Track Record</h2>
+            <h2 className="font-display text-3xl md:text-4xl text-navy mt-3">
+              Matric Results Track Record
+            </h2>
             <p className="mt-2 text-muted-foreground">Consistent excellence year after year.</p>
           </div>
           <div className="bg-card rounded-xl p-8 border">
@@ -93,15 +133,19 @@ function Academics() {
           <div className="bg-card border rounded-xl p-8">
             <h3 className="font-display text-2xl text-navy">Extra-Mural Activities</h3>
             <p className="mt-3 text-sm font-semibold text-navy">Sports</p>
-            <p className="text-muted-foreground text-sm">Rugby · Cricket · Hockey · Soccer · Athletics · Netball</p>
+            <p className="text-muted-foreground text-sm">
+              Rugby · Cricket · Hockey · Soccer · Athletics · Netball
+            </p>
             <p className="mt-4 text-sm font-semibold text-navy">Cultural</p>
-            <p className="text-muted-foreground text-sm">Choir · Drama · Public Speaking · Debating</p>
+            <p className="text-muted-foreground text-sm">
+              Choir · Drama · Public Speaking · Debating
+            </p>
           </div>
           <div className="bg-card border rounded-xl p-8">
             <h3 className="font-display text-2xl text-navy">Academic Support</h3>
             <p className="mt-3 text-muted-foreground text-sm">
-              Subject-specific tutoring, after-school study sessions and matric examination preparation
-              programmes ensure every learner reaches their full potential.
+              Subject-specific tutoring, after-school study sessions and matric examination
+              preparation programmes ensure every learner reaches their full potential.
             </p>
           </div>
         </div>

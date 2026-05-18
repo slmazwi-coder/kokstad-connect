@@ -73,7 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Kokstad College — Excellence in Education Since 1900" },
-      { name: "description", content: "Kokstad College is a leading public secondary school in Kokstad, KwaZulu-Natal, with a 95%+ matric pass rate and over 120 years of academic excellence." },
+      {
+        name: "description",
+        content:
+          "Kokstad College is a leading public secondary school in Kokstad, KwaZulu-Natal, with a 95%+ matric pass rate and over 120 years of academic excellence.",
+      },
       { property: "og:title", content: "Kokstad College — Consiste Fide" },
       { property: "og:description", content: "Shaping tomorrow's leaders since 1900." },
       { property: "og:type", content: "website" },
@@ -83,7 +87,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
