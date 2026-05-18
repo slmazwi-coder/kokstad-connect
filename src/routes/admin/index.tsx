@@ -1,6 +1,6 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
-import { GraduationCap, Eye, EyeOff } from "lucide-react";
+import { GraduationCap, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { adminLogin, isAdminAuthenticated } from "@/lib/admin-store";
 
 export const Route = createFileRoute("/admin/")({
@@ -12,7 +12,6 @@ export const Route = createFileRoute("/admin/")({
 
 function AdminLogin() {
   const router = useRouter();
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
@@ -25,10 +24,10 @@ function AdminLogin() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (adminLogin(username, password)) {
+    if (adminLogin(password)) {
       router.navigate({ to: "/admin/dashboard" });
     } else {
-      setError("Invalid username or password");
+      setError("Invalid password");
     }
   };
 
@@ -45,18 +44,6 @@ function AdminLogin() {
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-2xl p-8 space-y-5">
           <div>
-            <label className="block text-sm font-medium text-navy mb-1.5">Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              autoFocus
-              className="w-full rounded-lg border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-navy"
-              placeholder="Enter username"
-            />
-          </div>
-          <div>
             <label className="block text-sm font-medium text-navy mb-1.5">Password</label>
             <div className="relative">
               <input
@@ -66,6 +53,7 @@ function AdminLogin() {
                 required
                 className="w-full rounded-lg border border-input bg-background px-4 py-3 pr-11 text-sm focus:outline-none focus:ring-2 focus:ring-navy"
                 placeholder="Enter password"
+                autoFocus
               />
               <button
                 type="button"
@@ -90,6 +78,16 @@ function AdminLogin() {
             Contact the school office if you need access credentials.
           </p>
         </form>
+
+        <div className="text-center mt-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-gold transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Back to Website
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -588,11 +588,10 @@ export function isAdminAuthenticated(): boolean {
   return localStorage.getItem(STORAGE_KEYS.auth) === "true";
 }
 
-const ADMIN_USERNAME = import.meta.env.VITE_ADMIN_USERNAME || "admin";
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "admin";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "admin2026";
 
-export function adminLogin(username: string, password: string): boolean {
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+export function adminLogin(password: string): boolean {
+  if (password === ADMIN_PASSWORD) {
     localStorage.setItem(STORAGE_KEYS.auth, "true");
     return true;
   }
