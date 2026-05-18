@@ -116,17 +116,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { Toaster } from "sonner";
+import { useRouterState } from "@tanstack/react-router";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAdmin = pathname.startsWith("/admin");
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Navbar />
-      <main className="min-h-screen">
+      {!isAdmin && <Navbar />}
+      <main className={isAdmin ? "" : "min-h-screen"}>
         <Outlet />
       </main>
-      <Footer />
+      {!isAdmin && <Footer />}
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );

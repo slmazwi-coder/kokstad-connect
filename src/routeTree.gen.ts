@@ -17,6 +17,12 @@ import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AcademicsRouteImport } from './routes/academics'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminPaymentsRouteImport } from './routes/admin/payments'
+import { Route as AdminDocumentsRouteImport } from './routes/admin/documents'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminContentRouteImport } from './routes/admin/content'
+import { Route as AdminApplicationsRouteImport } from './routes/admin/applications'
 
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
@@ -58,6 +64,36 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPaymentsRoute = AdminPaymentsRouteImport.update({
+  id: '/admin/payments',
+  path: '/admin/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDocumentsRoute = AdminDocumentsRouteImport.update({
+  id: '/admin/documents',
+  path: '/admin/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/admin/content',
+  path: '/admin/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
+  id: '/admin/applications',
+  path: '/admin/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +104,12 @@ export interface FileRoutesByFullPath {
   '/fees': typeof FeesRoute
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRoute
+  '/admin/applications': typeof AdminApplicationsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/documents': typeof AdminDocumentsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +120,12 @@ export interface FileRoutesByTo {
   '/fees': typeof FeesRoute
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRoute
+  '/admin/applications': typeof AdminApplicationsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/documents': typeof AdminDocumentsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +137,12 @@ export interface FileRoutesById {
   '/fees': typeof FeesRoute
   '/gallery': typeof GalleryRoute
   '/news': typeof NewsRoute
+  '/admin/applications': typeof AdminApplicationsRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/documents': typeof AdminDocumentsRoute
+  '/admin/payments': typeof AdminPaymentsRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +155,12 @@ export interface FileRouteTypes {
     | '/fees'
     | '/gallery'
     | '/news'
+    | '/admin/applications'
+    | '/admin/content'
+    | '/admin/dashboard'
+    | '/admin/documents'
+    | '/admin/payments'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +171,12 @@ export interface FileRouteTypes {
     | '/fees'
     | '/gallery'
     | '/news'
+    | '/admin/applications'
+    | '/admin/content'
+    | '/admin/dashboard'
+    | '/admin/documents'
+    | '/admin/payments'
+    | '/admin'
   id:
     | '__root__'
     | '/'
@@ -121,6 +187,12 @@ export interface FileRouteTypes {
     | '/fees'
     | '/gallery'
     | '/news'
+    | '/admin/applications'
+    | '/admin/content'
+    | '/admin/dashboard'
+    | '/admin/documents'
+    | '/admin/payments'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +204,12 @@ export interface RootRouteChildren {
   FeesRoute: typeof FeesRoute
   GalleryRoute: typeof GalleryRoute
   NewsRoute: typeof NewsRoute
+  AdminApplicationsRoute: typeof AdminApplicationsRoute
+  AdminContentRoute: typeof AdminContentRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDocumentsRoute: typeof AdminDocumentsRoute
+  AdminPaymentsRoute: typeof AdminPaymentsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +270,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/payments': {
+      id: '/admin/payments'
+      path: '/admin/payments'
+      fullPath: '/admin/payments'
+      preLoaderRoute: typeof AdminPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/documents': {
+      id: '/admin/documents'
+      path: '/admin/documents'
+      fullPath: '/admin/documents'
+      preLoaderRoute: typeof AdminDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/admin/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/applications': {
+      id: '/admin/applications'
+      path: '/admin/applications'
+      fullPath: '/admin/applications'
+      preLoaderRoute: typeof AdminApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +324,12 @@ const rootRouteChildren: RootRouteChildren = {
   FeesRoute: FeesRoute,
   GalleryRoute: GalleryRoute,
   NewsRoute: NewsRoute,
+  AdminApplicationsRoute: AdminApplicationsRoute,
+  AdminContentRoute: AdminContentRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminDocumentsRoute: AdminDocumentsRoute,
+  AdminPaymentsRoute: AdminPaymentsRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
